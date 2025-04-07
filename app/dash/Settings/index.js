@@ -229,23 +229,6 @@ class Settings extends Component {
             <div className='signerPermissionDetails'>{'Show local account name when ENS is resolved'}</div>
           </div>
 
-          <div className='signerPermission localSetting' style={{ zIndex: 206 }}>
-            <div className='signerPermissionControls'>
-              <div className='signerPermissionSetting'>Colorway</div>
-              <Dropdown
-                syncValue={this.store('main.colorway')}
-                onChange={(value) => link.send('tray:action', 'setColorway', value)}
-                options={[
-                  { text: 'Dark', value: 'dark' },
-                  { text: 'Light', value: 'light' }
-                ]}
-              />
-            </div>
-            <div className='signerPermissionDetails'>
-              <span>Set EvoTradeWallet&apos;s visual theme</span>
-            </div>
-          </div>
-
           <div className='signerPermission localSetting' style={{ zIndex: 205 }}>
             <div className='signerPermissionControls'>
               <div className='signerPermissionSetting'>Trezor Derivation</div>
