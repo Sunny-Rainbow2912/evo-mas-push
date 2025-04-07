@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
-import chainSwitch from 'url:./chainswitch.mp4'
-import { Slide, SlideBody, SlideItem, SlideVideo } from '../../styled'
+// import chainSwitch from 'url:./chainswitch.mp4'
+import { Slide, SlideBody, SlideItem } from '../../styled'
 
 const SwitchChainsSlide = ({ setTitle, setProceed }) => {
   useEffect(() => {
@@ -13,11 +13,11 @@ const SwitchChainsSlide = ({ setTitle, setProceed }) => {
     <Slide>
       <SlideBody>
         <SlideItem>
-          <SlideVideo>
+          {/* <SlideVideo>
             <video loop autoPlay>
               <source src={chainSwitch} type='video/mp4' />
             </video>
-          </SlideVideo>
+          </SlideVideo> */}
           <div style={{ fontSize: '13px', lineHeight: '20px' }}>
             Legacy dapp not switching chains automatically?
           </div>
