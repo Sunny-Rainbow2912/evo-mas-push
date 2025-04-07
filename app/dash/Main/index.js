@@ -26,48 +26,10 @@ class Settings extends React.Component {
     // TODO: move this to global passed over IPC
     // eslint-disable-next-line
     const appVersion = require('../../../package.json').version
-    const instanceId = this.store('main.instanceId')
+
     return (
       <div className='appInfo'>
-        <div
-          className='appInfoLine appInfoLineInstanceId'
-          onMouseOver={(e) => {
-            e.stopPropagation()
-            e.preventDefault()
-            this.setState({ instanceIdHover: true })
-          }}
-          onMouseLeave={(e) => {
-            e.stopPropagation()
-            e.preventDefault()
-            this.setState({ instanceIdHover: false, instanceIdCopied: false })
-          }}
-          onClick={() => {
-            if (this.state.instanceIdHover) {
-              clearTimeout(this.instanceIdCopiedTimeout)
-              link.send('tray:clipboardData', instanceId)
-              this.setState({ instanceIdCopied: true })
-              this.instanceIdCopiedTimeout = setTimeout(
-                () => this.setState({ instanceIdCopied: false }),
-                1800
-              )
-            }
-          }}
-        >
-          {this.state.instanceIdCopied ? (
-            <span className='instanceIdCopied'>{'Instance ID Copied'}</span>
-          ) : (
-            instanceId
-          )}
-        </div>
         <div className='appInfoLine appInfoLineVersion'>{`v${appVersion}`}</div>
-        <div
-          className='appInfoViewLicense'
-          onClick={() =>
-            link.send('tray:openExternal', 'https://evotrade.io')
-          }
-        >
-          View License
-        </div>
         <div className='appInfoLine appInfoLineReset'>
           {this.state.resetConfirm ? (
             <>
