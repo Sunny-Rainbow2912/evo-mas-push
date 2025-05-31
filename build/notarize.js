@@ -5,7 +5,7 @@ const electronNotarize = require('@electron/notarize')
 
 module.exports = async function (params) {
   if (process.platform !== 'darwin') return // Only notarize the app on macOS
-  const appId = 'io.evotrade.wallet' // Same appId in electron-builder
+  const appId = 'com.evotrade.wallet' // Same appId in electron-builder
   const appPath = path.join(params.appOutDir, `${params.packager.appInfo.productFilename}.app`)
   if (!fs.existsSync(appPath)) throw new Error(`Cannot find application at: ${appPath}`)
 

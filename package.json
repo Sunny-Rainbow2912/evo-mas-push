@@ -37,7 +37,9 @@
     "prod": "npm run compile && npm run bundle && npm run launch",
     "compile": "npm run copy-assets && tsc --project tsconfig.build.json",
     "compile:watch": "npm run copy-assets && tsc --project tsconfig.build.json -w",
-    "build": "npm run compile && sleep 4 && npm run bundle && sleep 4 && electron-builder --config=build/electron-builder-standard.js",
+    "build": "npm run compile && sleep 4 && npm run bundle && sleep 4 && electron-builder --mac mas --universal --config=build/electron-builder-mas.js",
+    "build:mac": "electron-builder --mac --universal",
+    "dist": "electron-builder --config electron-builder.js",
     "copy-assets": "shx mkdir -p ./compiled/main/windows && shx cp ./main/windows/*.png ./compiled/main/windows",
     "parcel:build": "parcel build --no-autoinstall --public-url .",
     "publish": "electron-builder -c.snap.publish=github --config=build/electron-builder-standard.js",
@@ -196,7 +198,10 @@
     "querystring": false,
     "stream": false,
     "string_decoder": false,
-    "url": false
+    "url": false,
+    "usb": false,
+    "node-hid": false,
+    "secp256k1": false
   },
   "engines": {
     "electron": "23",
@@ -211,7 +216,7 @@
   "dash": "./bundle/dash.html",
   "dapp": "./bundle/dapp.html",
   "onboard": "./bundle/onboard.html",
-  "notify": "./bundle/notify.html",
+  "notify": "./bundle/notify.html",  
   "targets": {
     "main": false,
     "bridge": {
