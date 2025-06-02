@@ -19,21 +19,30 @@ const config = {
   
   mac: {
     category: "public.app-category.finance",
+    
     target: [
       { target: "mas", arch: "universal" },
     ],
     icon: "build/icon.icns",
+    asar:true,
     asarUnpack: [
       "**/*.node",
       "**/node_modules/{nodegit,sqlite3}/**"
     ],
     hardenedRuntime: false,
-    bundleVersion: "114",
+    bundleVersion: "118",
     gatekeeperAssess: true,
     entitlements: 'build/entitlements.mas.plist',
     entitlementsInherit: "build/entitlements.mas.inherit.plist",
-    provisioningProfile: "build/EvoTradeWallet_Dist.provisionprofile",
+    provisioningProfile: "build/MacAppStore.provisionprofile",
   },
+
+  mas: {
+    type: "distribution",
+  },
+  pkg: {
+    installLocation: "/Applications"
+  }
 }
   
 module.exports = config
