@@ -58,7 +58,7 @@ class Panel extends React.Component {
 
   render() {
 
-    const tosAccepted = this.store('tos.accepted') === true
+    const tosAccepted = this.store('tos.accepted') === true ? true : false;
 
     const opacity = this.store('tray.initial') ? 0 : 1
 
@@ -79,9 +79,8 @@ class Panel extends React.Component {
     })
     return (
       <div id='panel' style={{ opacity, background: '#002739' }}>
-        <div>1234</div>
-        <TermsOfService />
-        {/* {!tosAccepted && <TermsOfService />}
+        
+        {!tosAccepted && <TermsOfService />}
         {tosAccepted && (
             <>
               <Badge />
@@ -92,7 +91,7 @@ class Panel extends React.Component {
               <Backdrop />
               <Footer />
             </>
-        )} */}
+        )}
 
       </div>
     )

@@ -2,12 +2,17 @@ import React from 'react'
 import Restore from 'react-restore'
 
 class TermsOfService extends React.Component {
-  componentDidMount() {
-    console.log('[ToS] TermsOfService component mounted.')
-  }
 
-  render() {
-    return (
+    constructor(props) {
+      super(props);
+    }
+    handleAccept = () => {
+      this.props.store.set('tos.accepted', true);
+    };
+    
+    render() {
+        return (
+        
       <div style={{
         position: 'absolute',
         top: 0, left: 0, right: 0, bottom: 0,
@@ -19,6 +24,7 @@ class TermsOfService extends React.Component {
         fontSize: '15px',
         lineHeight: '1.6'
       }}>
+        <div className='_tosContainer' >
         <h2>Terms of Service</h2>
         <p><strong>Effective Date:</strong> 07/06/2025</p>
         <p>Welcome to our crypto wallet application (“App”). Please read this Terms of Service (“Terms”) carefully before using the App. By tapping “I Agree,” you confirm that you have read, understood, and accepted these Terms.</p>
@@ -63,19 +69,12 @@ class TermsOfService extends React.Component {
           <li>You have read and understood these Terms</li>
           <li>You agree to comply with all applicable laws when using the App</li>
         </ul>
+        </div>
+  
 
         <button
-          onClick={() => this.store.set('tos.accepted', true)}
-          style={{
-            marginTop: '2rem',
-            padding: '0.75rem 1.5rem',
-            fontSize: '1rem',
-            backgroundColor: '#00c2ff',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
+          onClick={this.handleAccept}
+          className='_tosAgreeButton'
         >
           I Agree
         </button>
