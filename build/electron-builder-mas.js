@@ -14,7 +14,8 @@ const config = {
       "!node_modules/**/doc/**",
       "!node_modules/**/docs/**",
       "!node_modules/**/*.d.ts",
-      "!**/*.map"
+      "!**/*.map",
+       "!**/TestGUI.app.in"
   ],
   
   mac: {
@@ -30,7 +31,7 @@ const config = {
       "**/node_modules/{nodegit,sqlite3}/**"
     ],
     hardenedRuntime: false,
-    bundleVersion: "118",
+    bundleVersion: "119",
     gatekeeperAssess: true,
     entitlements: 'build/entitlements.mas.plist',
     entitlementsInherit: "build/entitlements.mas.inherit.plist",
