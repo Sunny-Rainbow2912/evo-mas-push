@@ -17,6 +17,21 @@ import TermsOfService from './TermsOfService'
 // <DevTools />
 
 class Panel extends React.Component {
+  state = {
+    tosAccepted: false
+  }
+
+  componentDidMount() {
+    const accepted = localStorage.getItem('tos.accepted') === 'true'
+    this.setState({ tosAccepted: accepted })
+  }
+  
+
+  handleTosAgree = () => {
+    localStorage.setItem('tos.accepted', 'true')
+    this.setState({ tosAccepted: true })
+  }
+
   indicator(connection) {
     const status = [connection.primary.status, connection.secondary.status]
     if (status.indexOf('connected') > -1) {
@@ -58,10 +73,8 @@ class Panel extends React.Component {
 
   render() {
 
-    const tosAccepted = this.store('tos.accepted') === true ? true : false;
-
     const opacity = this.store('tray.initial') ? 0 : 1
-
+    
     const networks = this.store('main.networks')
     const networkOptions = []
     Object.keys(networks).forEach((type) => {
@@ -79,19 +92,18 @@ class Panel extends React.Component {
     })
     return (
       <div id='panel' style={{ opacity, background: '#002739' }}>
-        
-        {!tosAccepted && <TermsOfService />}
-        {tosAccepted && (
-            <>
-              <Badge />
-              <Notify />
-              <Menu />
-              <AccountSelector />
-              <Account />
-              <Backdrop />
-              <Footer />
-            </>
-        )}
+        {!this.state.tosAccepted && <TermsOfService onAgree={this.handleTosAgree} />}
+        {this.state.tosAccepted && (
+          <>
+            <Badge />
+            <Notify />
+            <Menu />
+            <AccountSelector />
+            <Account />
+            <Backdrop />
+            <Footer />
+          </>
+        )}  
 
       </div>
     )

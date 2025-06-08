@@ -88,6 +88,7 @@
     "cross-env": "7.0.3",
     "deep-equal": "2.2.0",
     "electron-log": "4.4.8",
+    "electron-store": "^10.0.1",
     "electron-updater": "6.3.9",
     "eth-ens-namehash": "2.0.8",
     "eth-provider": "0.13.6",
