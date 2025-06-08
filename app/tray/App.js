@@ -6,26 +6,45 @@ import Account from './Account'
 import Notify from './Notify'
 import Menu from './Menu'
 import Badge from './Badge'
-
 import Backdrop from './Backdrop'
 import AccountSelector from './AccountSelector'
 import Footer from './Footer'
-
 import TermsOfService from './TermsOfService'
+import GeoRestriction from './GeoRestriction/GeoRestriction'
+
+import { invokeBridge } from './utils/ipcBridge'; // adjust path
+
+import { RESTRICTED_COUNTRIES, RESTRICTED_REGIONS_US } from './GeoRestriction/GeoRestrictionList'
 
 // import DevTools from 'restore-devtools'
 // <DevTools />
 
 class Panel extends React.Component {
   state = {
-    tosAccepted: false
+    tosAccepted: false,
+    geoRestricted: false
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const accepted = localStorage.getItem('tos.accepted') === 'true'
     this.setState({ tosAccepted: accepted })
+
+
+      // The call itself remains clean and unchanged
+      const data = await invokeBridge('get-geo-info');
+
+      if (data) {
+        const country = data.country_code;
+        const region = data.region_code;
+        const usRegion = `US-${region}`;
+
+        if (RESTRICTED_COUNTRIES.includes(country) || RESTRICTED_REGIONS_US.includes(usRegion)) {
+          this.setState({ geoRestricted: true });
+        }
+      
+    } 
+    
   }
-  
 
   handleTosAgree = () => {
     localStorage.setItem('tos.accepted', 'true')
@@ -72,9 +91,11 @@ class Panel extends React.Component {
   }
 
   render() {
-
     const opacity = this.store('tray.initial') ? 0 : 1
-    
+
+    if (this.state.geoRestricted) return <GeoRestriction />
+    if (!this.state.tosAccepted) return <TermsOfService onAgree={this.handleTosAgree} />
+
     const networks = this.store('main.networks')
     const networkOptions = []
     Object.keys(networks).forEach((type) => {
@@ -90,21 +111,16 @@ class Panel extends React.Component {
         }
       })
     })
+
     return (
       <div id='panel' style={{ opacity, background: '#002739' }}>
-        {!this.state.tosAccepted && <TermsOfService onAgree={this.handleTosAgree} />}
-        {this.state.tosAccepted && (
-          <>
-            <Badge />
-            <Notify />
-            <Menu />
-            <AccountSelector />
-            <Account />
-            <Backdrop />
-            <Footer />
-          </>
-        )}  
-
+        <Badge />
+        <Notify />
+        <Menu />
+        <AccountSelector />
+        <Account />
+        <Backdrop />
+        <Footer />
       </div>
     )
   }
