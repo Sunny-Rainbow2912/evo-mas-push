@@ -33,7 +33,7 @@ class TermsOfService extends React.Component {
 <p>We do not operate as a financial institution, money transmitter, or exchange. The App does not provide fiat currency services or act as an intermediary in any transactions.</p>
 
 <h3>3. Decentralized Protocol Access</h3>
-<p>The App enables you to connect directly with public blockchain networks and decentralized applications (dApps). All transactions are executed directly between you and the blockchain via your device.</p>
+<p>The App enables you to connect directly with public blockchain networks. All transactions are executed directly between you and the blockchain via your device.</p>
 <p>We do not process, transmit, or confirm transactions on your behalf. You are responsible for verifying all details before signing or broadcasting any transaction.</p>
 
 <h3>4. Jurisdiction Restrictions</h3>

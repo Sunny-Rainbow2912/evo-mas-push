@@ -260,7 +260,7 @@ class Settings extends React.Component {
               <div className='dashModuleIcon'>{svg.rightarrow(14)}</div>
             </div>
 
-            <div
+            {/* <div
               className='dashModule'
               onClick={() => link.send('tray:action', 'navDash', { view: 'dapps', data: {} })}
             >
@@ -270,7 +270,7 @@ class Settings extends React.Component {
               </div>
 
               <div className='dashModuleIcon'>{svg.rightarrow(14)}</div>
-            </div>
+            </div> */}
 
             <div
               className='dashModule'
@@ -285,10 +285,10 @@ class Settings extends React.Component {
             </div>
           </div>
 
-          <div className='snipIt'>
+          {/* <div className='snipIt'>
             <div>Using a dapp that doesn&apos;t support EvoTradeWallet natively?</div>
             <div>Inject a connection with our browser extension!</div>
-          </div>
+          </div> */}
 
           <div className='requestFeature'>
             <div

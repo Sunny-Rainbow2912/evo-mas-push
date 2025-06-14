@@ -19,10 +19,10 @@ const CurrentSlide = ({ slide, platform, setTitle, setProceed }) => {
   else if (slide === 1) return <Intro setTitle={setTitle} setProceed={setProceed} version={appInfo.version} />
   else if (slide === 2) return <Access platform={platform} setTitle={setTitle} setProceed={setProceed} />
   else if (slide === 3) return <Chains setTitle={setTitle} setProceed={setProceed} />
-  else if (slide === 4) return <Omnichain setTitle={setTitle} setProceed={setProceed} />
-  else if (slide === 5) return <Accounts setTitle={setTitle} setProceed={setProceed} />
+  // else if (slide === 4) return <Omnichain setTitle={setTitle} setProceed={setProceed} />
+  else if (slide === 4) return <Accounts setTitle={setTitle} setProceed={setProceed} />
   //else if (slide === 6) return <SwitchChains setTitle={setTitle} setProceed={setProceed} />
-  else if (slide === 6) return <Outro setTitle={setTitle} setProceed={setProceed} />
+  else if (slide === 5) return <Outro setTitle={setTitle} setProceed={setProceed} />
   else return <Slide>{'Cannot find slide'}</Slide>
 }
 

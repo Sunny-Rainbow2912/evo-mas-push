@@ -23,8 +23,8 @@ const Chains = ({ setTitle, setProceed }) => {
         </SlideItem>
         <SlideItem>
           <div>You can also add new chains by clicking the button</div>
-          <div>at the bottom of the panel or by using a dapp</div>
-          <div>that adds chains for you, such as chainlist.org.</div>
+          <div>at the bottom of the panel.</div>
+          {/* <div>or by using a dapp that adds chains for you, such as chainlist.org.</div> */}
         </SlideItem>
       </SlideBody>
     </Slide>
