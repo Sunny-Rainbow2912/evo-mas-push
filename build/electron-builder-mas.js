@@ -31,7 +31,7 @@ const config = {
       "**/node_modules/{nodegit,sqlite3}/**"
     ],
     hardenedRuntime: false,
-    bundleVersion: "120",
+    bundleVersion: "122",
     gatekeeperAssess: true,
     entitlements: 'build/entitlements.mas.plist',
     entitlementsInherit: "build/entitlements.mas.inherit.plist",
