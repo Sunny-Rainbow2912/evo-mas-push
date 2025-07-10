@@ -145,6 +145,10 @@ class _AccountMain extends React.Component {
     const accountModuleOrder = this.store('panel.account.moduleOrder')
     let slideHeight = 0
     const modules = accountModuleOrder.map((id, i) => {
+      // hide Dapp here -ICT
+      if(i === 4) {
+        return
+      }
       const module = accountModules[id] || { height: 0 }
       slideHeight += module.height + 12
       return (
